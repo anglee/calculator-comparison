@@ -1,0 +1,8 @@
+.idea
+bundle.js
+node_modules/
+npm-debug.log
+bower_components/
+dist/
+.DS_Store
+
