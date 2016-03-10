@@ -51,6 +51,9 @@ const reducer = (state = defaultState, action) => {
         operator: action.operator,
         result: action.operator.fn(calcState.operandA, calcState.operandB)
       });
+      if (action.calculatorId !== calculatorIds.CALCULATOR_3) {
+        updateCalculator3();
+      }
       return newState;
     default:
       return state;

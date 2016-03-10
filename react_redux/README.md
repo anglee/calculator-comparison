@@ -1,6 +1,7 @@
 ```
 npm install
+npm run webpack
 npm start
 ```
 
-open `calculator.html`
+open `http://localhost:8000`
