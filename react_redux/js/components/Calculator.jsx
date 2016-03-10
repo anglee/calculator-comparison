@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import operators from '../constants/operators';
 
@@ -6,9 +7,9 @@ const Calculator = ({
     operandB,
     operator,
     result,
-    onOperandAChange,
-    onOperandBChange,
-    onOperatorChange
+    onOperandAChange = _.noop,
+    onOperandBChange = _.noop,
+    onOperatorChange = _.noop
     }) => {
   const options = operators.map((op) => {
     return (<option key={op.symbol}>{op.symbol}</option>);
@@ -16,13 +17,13 @@ const Calculator = ({
   return (
       <div>
         <div>
-          <input type="text" value={operandA} onChange={onOperandAChange}/>
+          <input type="text" className="operand-a" value={operandA} onChange={onOperandAChange}/>
           <select value={operator.symbol} onChange={onOperatorChange}>
             {options}
           </select>
-          <input type="text" value={operandB} onChange={onOperandBChange}/>
+          <input type="text" className="operand-b" value={operandB} onChange={onOperandBChange}/>
         </div>
-        <div>{operator.name} of {operandA} and {operandB} is : {result}</div>
+        <div className="summary">{operator.name} of {operandA} and {operandB} is : {result}</div>
       </div>
   );
 };
