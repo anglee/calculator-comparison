@@ -7,10 +7,11 @@ const defaultCalculatorState = {
   operator: operators[0],
   result: 2
 };
-const defaultState = {};
-defaultState[calculatorIds.CALCULATOR_1] = defaultCalculatorState;
-defaultState[calculatorIds.CALCULATOR_2] = defaultCalculatorState;
-defaultState[calculatorIds.CALCULATOR_3] = defaultCalculatorState;
+const defaultState = {
+  [calculatorIds.CALCULATOR_1]: defaultCalculatorState,
+  [calculatorIds.CALCULATOR_2]: defaultCalculatorState,
+  [calculatorIds.CALCULATOR_3]: defaultCalculatorState
+};
 
 const reducer = (state = defaultState, action) => {
   const newState = Object.assign({}, state);
