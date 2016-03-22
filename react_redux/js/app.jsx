@@ -6,7 +6,11 @@ import calculatorFactory from './containers/calculatorFactory';
 import calculatorIds from './constants/calculatorIds';
 import { Provider } from 'react-redux';
 
-const store = createStore(reducer);
+const finalCreateStore = window.devToolsExtension
+  ? window.devToolsExtension()(createStore)
+  : createStore;
+
+const store = finalCreateStore(reducer);
 
 const Calculator1 = calculatorFactory(calculatorIds.CALCULATOR_1);
 const Calculator2 = calculatorFactory(calculatorIds.CALCULATOR_2);
