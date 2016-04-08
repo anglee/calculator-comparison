@@ -5,6 +5,7 @@ import reducer from './reducers/reducer';
 import calculatorFactory from './containers/calculatorFactory';
 import calculatorIds from './constants/calculatorIds';
 import { Provider } from 'react-redux';
+import UndoButton from './containers/UndoButton';
 
 const finalCreateStore = window.devToolsExtension
   ? window.devToolsExtension()(createStore)
@@ -17,11 +18,12 @@ const Calculator2 = calculatorFactory(calculatorIds.CALCULATOR_2);
 const Calculator3 = calculatorFactory(calculatorIds.CALCULATOR_3);
 
 ReactDOM.render(
-    <Provider store={store}>
-      <div>
-        <Calculator1/>
-        <Calculator2/>
-        <Calculator3/>
-      </div>
-    </Provider>,
-    document.getElementById('root'));
+  <Provider store={store}>
+    <div>
+      <Calculator1/>
+      <Calculator2/>
+      <Calculator3/>
+      <UndoButton/>
+    </div>
+  </Provider>,
+  document.getElementById('root'));

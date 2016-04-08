@@ -22,6 +22,12 @@ const actions = {
       calculatorId,
       operator: _.find(operators, {symbol: operatorSymbol})
     };
+  },
+  undo() {
+    console.log("undo");
+    return {
+      type: "UNDO"
+    };
   }
 };
 

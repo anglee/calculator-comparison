@@ -15,7 +15,7 @@ const Calculator = ({
     return (<option key={op.symbol}>{op.symbol}</option>);
   });
   return (
-      <div>
+      <div className="calculator">
         <div>
           <input type="text" className="operand-a" value={operandA} onChange={onOperandAChange}/>
           <select value={operator.symbol} onChange={onOperatorChange}>

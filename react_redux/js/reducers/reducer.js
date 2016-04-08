@@ -5,7 +5,7 @@ const defaultCalculatorState = {
   operandA: 1,
   operandB: 1,
   operator: operators[0],
-  result: 2
+  result: operators[0].fn(1,1)
 };
 const defaultState = {
   [calculatorIds.CALCULATOR_1]: defaultCalculatorState,
@@ -56,6 +56,8 @@ const reducer = (state = defaultState, action) => {
         updateCalculator3();
       }
       return newState;
+    case "UNDO":
+      return state;
     default:
       return state;
   }
