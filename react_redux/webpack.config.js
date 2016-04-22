@@ -6,6 +6,7 @@ var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var dir_js = path.resolve(__dirname, 'js');
+var dir_less = path.resolve(__dirname, 'less');
 var dir_style = path.resolve(__dirname, 'style');
 var dir_html = path.resolve(__dirname, 'html');
 var dir_build = path.resolve(__dirname, 'dist');
@@ -34,9 +35,9 @@ module.exports = {
         },
       },
       {
-        loader: "style-loader!css-loader",
+        loader: "style-loader!css-loader!less-loader",
         //test: /\.css$/,
-        test: dir_style
+        test: dir_less
       },
     ]
   },

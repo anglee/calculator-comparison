@@ -6,6 +6,7 @@ import calculatorFactory from './containers/calculatorFactory';
 import calculatorIds from './constants/calculatorIds';
 import { Provider } from 'react-redux';
 import UndoButton from './containers/UndoButton';
+import '../less/index.less';
 
 const finalCreateStore = window.devToolsExtension
   ? window.devToolsExtension()(createStore)
