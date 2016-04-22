@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import operators from '../constants/operators';
 import calculatorIds from '../constants/calculatorIds';
 
@@ -25,7 +26,8 @@ const updateState = (newState) => {
 };
 const undoState = () => {
   console.log('undoState');
-  return stateHistoryStack.pop();
+  stateHistoryStack.pop();
+  return _.last(stateHistoryStack);
 };
 
 const reducer = (state = defaultState, action) => {
@@ -75,7 +77,8 @@ const reducer = (state = defaultState, action) => {
     {
       const lastState = undoState();
       if (lastState) {
-        return lastState
+        console.info('Going back to', lastState);
+        return lastState;
       } else {
         console.warn('No more action to undo');
         return state;
