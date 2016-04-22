@@ -2,14 +2,12 @@ import _ from 'lodash';
 import React from 'react';
 import operators from '../constants/operators';
 
-const UndoButoon = ({
+const UndoButton = ({
   onClick
 }) => {
   return (
-    <button onlick={() => {
-      console.log("test");
-    }}>Undo</button>
+    <button onClick={onClick}>Undo</button>
   );
 };
 
-export default UndoButoon;
+export default UndoButton;

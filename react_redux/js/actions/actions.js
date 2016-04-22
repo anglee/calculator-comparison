@@ -24,7 +24,6 @@ const actions = {
     };
   },
   undo() {
-    console.log("undo");
     return {
       type: "UNDO"
     };

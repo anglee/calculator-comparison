@@ -11,12 +11,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onClick: () => {
-      console.log("onclick");
       dispatch(actions.undo());
     }
   };
 }
 
-connect(mapStateToProps, mapDispatchToProps)(UndoButton);
-
-export default UndoButton;
+export default connect(mapStateToProps, mapDispatchToProps)(UndoButton);

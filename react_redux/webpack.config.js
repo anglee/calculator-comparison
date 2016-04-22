@@ -6,6 +6,7 @@ var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var dir_js = path.resolve(__dirname, 'js');
+var dir_style = path.resolve(__dirname, 'style');
 var dir_html = path.resolve(__dirname, 'html');
 var dir_build = path.resolve(__dirname, 'dist');
 
@@ -33,14 +34,17 @@ module.exports = {
         },
       },
       {
-        loader: 'style-loader',
-      }
+        loader: "style-loader!css-loader",
+        //test: /\.css$/,
+        test: dir_style
+      },
     ]
   },
   plugins: [
     // Simply copies the files over
     new CopyWebpackPlugin([
-      { from: dir_html } // to: output.path
+      { from: dir_html }, // to: output.path
+      { from: dir_style }
     ]),
     // Avoid publishing files when compilation fails
     new webpack.NoErrorsPlugin()

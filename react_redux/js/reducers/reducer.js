@@ -13,6 +13,21 @@ const defaultState = {
   [calculatorIds.CALCULATOR_3]: defaultCalculatorState
 };
 
+const stateHistoryStack = [defaultState];
+const MAX_HISTORY_LENGTH = 100;
+const updateState = (newState) => {
+  console.log('updateState', newState);
+  stateHistoryStack.push(newState);
+  if (stateHistoryStack.length > MAX_HISTORY_LENGTH) {
+    stateHistoryStack.shift();
+  }
+  return newState;
+};
+const undoState = () => {
+  console.log('undoState');
+  return stateHistoryStack.pop();
+};
+
 const reducer = (state = defaultState, action) => {
   const newState = Object.assign({}, state);
   const calcState = state[action.calculatorId];
@@ -37,7 +52,7 @@ const reducer = (state = defaultState, action) => {
       if (action.calculatorId !== calculatorIds.CALCULATOR_3) {
         updateCalculator3();
       }
-      return newState;
+      return updateState(newState);
     case "SET_OPERAND_B":
       newState[action.calculatorId] = Object.assign({}, calcState, {
         operandB: action.operand,
@@ -46,7 +61,7 @@ const reducer = (state = defaultState, action) => {
       if (action.calculatorId !== calculatorIds.CALCULATOR_3) {
         updateCalculator3();
       }
-      return newState;
+      return updateState(newState);
     case "SET_OPERATOR":
       newState[action.calculatorId] = Object.assign({}, calcState, {
         operator: action.operator,
@@ -55,9 +70,17 @@ const reducer = (state = defaultState, action) => {
       if (action.calculatorId !== calculatorIds.CALCULATOR_3) {
         updateCalculator3();
       }
-      return newState;
+      return updateState(newState);
     case "UNDO":
-      return state;
+    {
+      const lastState = undoState();
+      if (lastState) {
+        return lastState
+      } else {
+        console.warn('No more action to undo');
+        return state;
+      }
+    }
     default:
       return state;
   }
